@@ -8,6 +8,7 @@ MAX_HRS_IN_MONTH=100;
 totalEmpHrs=0;
 totalWorkingDays=0;
 
+declare -A dailyWage
 function getWorkHrs()
 {
         case $1 in
@@ -37,8 +38,13 @@ do
         empCheck=$(( RANDOM%3 ))
         empHrs="$( getWorkHrs $empCheck )"
         totalEmpHours=$(( $totalEmpHrs+$empHrs ))
-	dailyWage[$totalWorkingDays]="$( getEmpWage $empHrs )"
+	dailyWage["Day $totalWorkingDays"]="$( getEmpWage $empHrs )"
 done
 totalSalary=$(( $totalEmpHours*$empRatePerHr ))
 echo ${dailyWage[@]}
+echo ${!dailyWage[@]}
+for i in "${!dailyWage[@]}"
+do
+        echo $i ":" ${dailyWage[$i]}
+done
 
