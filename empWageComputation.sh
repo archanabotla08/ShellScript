@@ -5,6 +5,8 @@ empRatePerHr=20;
 totalSalary=0;
 numWorkingDays=20
 MAX_HRS_IN_MONTH=100;
+totalEmpHrs=0;
+totalWorkingDays=0;
 
 function getWorkHrs()
 {
