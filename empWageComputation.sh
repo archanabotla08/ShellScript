@@ -1,14 +1,18 @@
 #!/bin/bash -x
-isPresent=1;
-randomCheck=$(( RANDOM%2 ))
-if [ $isPresent -eq $randomCheck ]
+isPartTime=1;
+isFullTime=2;
+empRatePerHr=20;
+randomCheck=$(( RANDOM%3 ))
+
+if [ $isFullTime -eq $randomCheck ]
 then
-        empRatePerHr=20;
-        empHr=8;
-        salary=$(( $empRatePerHr * $empHr ));
-        echo "Employee Wages $salary"
+        empHrs=8;
+elif [ $isPartTime -eq $randomCheck ]
+then
+        empHrs=4;
 else
-        salary=0
-        echo "Employee wages $salary"
+        empHrs=0;
 fi
+salary=$(( $empRatePerHr * $empHrs))
+echo "Employee Wages $salary"
 
